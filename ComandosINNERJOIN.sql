@@ -1,7 +1,10 @@
-CREATE DATABASE Livraria;
+-- Cria o banco de dados vasio
+CREATE DATABASE dbLivraria;
 
-USE Livraria;
+-- Seleciona o banco de dados
+USE dbLivraria;
 
+-- Criando as tabelas no db(Data Base || Banco de Dados)Livraria
 CREATE TABLE tbl_autores (
 	ID_Autor SMALLINT,
 	Nome_Autor VARCHAR(40) NOT NULL,
@@ -27,9 +30,7 @@ CREATE TABLE tbl_livros (
 	REFERENCES tbl_autores (ID_autor) ON DELETE CASCADE
 );
 
-
-SELECT * FROM tbl_livros;
-
+-- Inserindo os dados em cada tabela
 INSERT INTO tbl_autores(ID_Autor,Nome_Autor, Sobrenome_Autor) 
 VALUES (1,'Leonel','Caldela'),
 	   (2,'Cecília','Meireles'),
@@ -54,26 +55,20 @@ VALUES ('Livro Ozob Volume 1 – Protocolo Molotov', 8568295045, 1, 1,'02-10-2015'
 	   ('Livro Genérico Vol. 2',				   8567295045, 1, 1,'04-10-2015', 35.60);
 
 
+-- Seleciona o nome do livro, o ISBN e o nome do autor
 SELECT tbl_livros.Nome_Livro, tbl_livros.ISBN, tbl_autores.Nome_Autor
 FROM tbl_livros
 INNER JOIN tbl_autores
 ON tbl_livros.ID_Autor = tbl_autores.ID_Autor;
 
-SELECT * FROM tbl_livros;
-
-
-SELECT tbl_livros.Nome_Livro, tbl_livros.ISBN, tbl_autores.Nome_Autor
-FROM tbl_livros
-INNER JOIN tbl_autores
-ON tbl_livros.ID_Autor = tbl_autores.ID_Autor;
-
-
+-- Seleciona o nome do livro que tem a editora com nome iniciado em S
 SELECT L.Nome_Livro AS Livros, E.Nome_editora AS Editoras
 FROM tbl_livros AS L
 INNER JOIN tbl_editoras AS E
 ON L.ID_editora = E.ID_editora
 WHERE E.Nome_Editora LIKE 'S%';
 
+-- Seleciona e organiza os livros pelo preço
 SELECT L.Nome_Livro AS Livro,
 A.Nome_autor AS Autor,
 E.Nome_Editora AS Editora,
