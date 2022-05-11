@@ -33,7 +33,7 @@ CREATE TABLE tbl_livros (
 -- Inserindo os dados em cada tabela
 INSERT INTO tbl_autores(ID_Autor,Nome_Autor, Sobrenome_Autor) 
 VALUES (1,'Leonel','Caldela'),
-	   (2,'Cecília','Meireles'),
+	   (2,'CecÃ­lia','Meireles'),
 	   (3,'Clarice', 'Lispector'),
 	   (4,'Carolina', 'Maria de Jesus');
 
@@ -43,16 +43,16 @@ VALUES ('DarkSide'),
 	   ('Companhia das Letras'),
 	   ('Rocco'),
 	   ('Suma'),
-	   ('Intrínseca');
+	   ('IntrÃ­nseca');
 
 INSERT INTO tbl_livros(Nome_Livro, ISBN, ID_Autor, ID_Editora, Data_Pub, Preco_Livro) 
-VALUES ('Livro Ozob Volume 1 – Protocolo Molotov', 8568295045, 1, 1,'02-10-2015', 35.90),
-	   ('The Hour Of The Star',					   3567285146, 3, 2,'02-10-2015', 92.33),
-	   ('Child Of The Dark',					   9667106148, 4, 3,'01-09-1963', 106.52),
-	   ('O Inferno',							   8568295046, 1, 4,'02-10-2015', 35.90),
-	   ('Poesia Completa: Cecília Meireles',	   8568295047, 2, 5,'02-10-2011', 124.69),
-	   ('Livro Genérico Vol. 1',				   8568395045, 1, 6,'03-10-2015', 15.90),
-	   ('Livro Genérico Vol. 2',				   8567295045, 1, 1,'04-10-2015', 35.60);
+VALUES ('Livro Ozob Volume 1 â€“ Protocolo Molotov', 8568295045, 1, 1,'02-10-2015', 35.90),
+	   ('The Hour Of The Star', 3567285146, 3, 2,'02-10-2015', 92.33),
+	   ('Child Of The Dark', 9667106148, 4, 3,'01-09-1963', 106.52),
+	   ('O Inferno', 8568295046, 1, 4,'02-10-2015', 35.90),
+	   ('Poesia Completa: CecÃ­lia Meireles', 8568295047, 2, 5,'02-10-2011', 124.69),
+	   ('Livro GenÃ©rico Vol. 1', 8568395045, 1, 6,'03-10-2015', 15.90),
+	   ('Livro GenÃ©rico Vol. 2', 8567295045, 1, 1,'04-10-2015', 35.60);
 
 
 -- Seleciona o nome do livro, o ISBN e o nome do autor
@@ -68,11 +68,11 @@ INNER JOIN tbl_editoras AS E
 ON L.ID_editora = E.ID_editora
 WHERE E.Nome_Editora LIKE 'S%';
 
--- Seleciona e organiza os livros pelo preço
+-- Seleciona e organiza os livros pelo preÃ§o
 SELECT L.Nome_Livro AS Livro,
 A.Nome_autor AS Autor,
 E.Nome_Editora AS Editora,
-L.Preco_Livro AS 'Preço do Livro'
+L.Preco_Livro AS 'PreÃ§o do Livro'
 FROM tbl_livros L
 RIGHT JOIN tbl_autores AS A
 ON L.ID_autor = A.ID_autor
